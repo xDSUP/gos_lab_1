@@ -8,7 +8,9 @@
             </head>
             <body>
                 <h1>Елфимов Илья</h1>
-
+                <div class="container">
+                    <xsl:apply-templates/>
+                </div>
             </body>
         </html>
     </xsl:template>
