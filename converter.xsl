@@ -1,17 +1,26 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:template match="/">
         <html lang="en">
             <head>
-                <title>Задание xsl</title>
+                <title>ГоссЛаб 1</title>
+                <meta charset="UTF-8"/>
+                <link rel="stylesheet" type="text/css" href="styles.css"/>
             </head>
             <body>
                 <h1>Елфимов Илья</h1>
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <xsl:apply-templates/>
-                </math>
+
             </body>
         </html>
+    </xsl:template>
+    <xsl:template match="задание">
+        <div class="task">
+            <xsl:apply-templates/>
+        </div>
+    </xsl:template>
+    <xsl:template match="матвыр">
+        <math>
+            <xsl:apply-templates/>
+        </math>
     </xsl:template>
     <xsl:template match="строка">
         <mrow>
@@ -53,5 +62,16 @@
         <msup>
             <xsl:apply-templates/>
         </msup>
+    </xsl:template>
+    <!--    SVG-->
+    <xsl:template match="графика">
+        <svg width="{@ширина}" height="{@высота}" xmlns="http://www.w3.org/2000/svg">
+            <xsl:apply-templates/>
+        </svg>
+    </xsl:template>
+
+    <xsl:template match="эллипс">
+        <ellipse fill="{@заливка}" stroke="{@ободок}" stroke-width="{@ширина-ободка}" cx="{@cx}" cy="{@cy}"
+                 rx="{@rx}" ry="{@ry}"/>
     </xsl:template>
 </xsl:stylesheet>
